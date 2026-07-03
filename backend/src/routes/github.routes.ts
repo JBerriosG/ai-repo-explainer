@@ -31,24 +31,6 @@ router.get("/repos", async (req: any, res) => {
     }
 });
 
-router.get("/repos/:owner/:repo/files", async (req: any, res) => {
-    try {
-        if (!req.user) {
-            return res.status(401).json({
-                error: "Unauthorized"
-            });
-        }
-
-        const { owner, repo } = req.params;
-        const files = await scanRepo(owner, repo, req.user.accessToken);
-        res.json(files);
-    } catch (error) {
-        res.status(500).json({
-            error: "Failed to fetch repository files: " + error
-        });
-    }
-});
-
 router.get("/repos/:owner/:repo/analyze", async (req: any, res) => {
     try {
         if (!req.user) {
