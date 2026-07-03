@@ -5,11 +5,11 @@ services:
     environment:
       POSTGRES_USER: admin
       POSTGRES_PASSWORD: 123456789
-      POSTGRES_DB: ai-repo-db
+      POSTGRES_DB: ai_repo_db
     ports:
-      - "5432:5432"
+      - "5433:5432"
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - postgres_data:/var/lib/postgresql
 
 volumes:
   postgres_data:
