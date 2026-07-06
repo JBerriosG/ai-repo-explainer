@@ -26,7 +26,7 @@ export async function scanRepo(owner: string, repo: string, accessToken: string)
         compactedContent: compactFileContent(file.path, file.content)
     }));
 
-    const context = buildRepoContext(techs, compactedContent);
+    const context = buildRepoContext(techs, files, compactedContent);
 
-    return { files, techs, importantFiles, extractContent, compactedContent, context };
+    return {context };
 }

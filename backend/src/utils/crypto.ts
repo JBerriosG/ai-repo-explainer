@@ -23,6 +23,9 @@ export function encrypt (text:string):string{
 
 export function decrypt (encryptedText:string):string{
     const [ivHex, authTagHex, encrypted] = encryptedText.split(':');
+    console.log('ivHex:', ivHex);
+    console.log('authTagHex:', authTagHex);
+    console.log('encrypted:', encrypted);
     if(!ivHex || !authTagHex || !encrypted) {
         throw new Error('Formato de texto cifrado inválido!');
     }
@@ -34,6 +37,6 @@ export function decrypt (encryptedText:string):string{
 
     let decrypted = decipher.update(encrypted, 'hex', 'utf8');
     decrypted += decipher.final('utf8');
-    
+
     return decrypted;
 }
