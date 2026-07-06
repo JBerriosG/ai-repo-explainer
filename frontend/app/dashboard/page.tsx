@@ -94,7 +94,7 @@ export default function DashboardPage() {
                 <div className="flex flex-1 items-start justify-between p-5">
                   <div className="flex-1">
                     <div className="mb-2 flex items-center gap-2">
-                      <h2 className="text-lg font-semibold text-gray-900 truncate max-w-[200px]">
+                      <h2 className="text-lg font-semibold text-gray-900 truncate max-w-50">
                         {repo.name}
                       </h2>
                       <span className={`rounded-full px-2 py-0.5 text-xs font-medium ${repo.private ? "bg-red-50 text-red-700 border border-red-100" : "bg-green-50 text-green-700 border border-green-100"
@@ -150,7 +150,7 @@ export default function DashboardPage() {
             onClick={(e) => e.stopPropagation()} // Evita cerrar si hacen clic dentro del modal
           >
             {/* Modal Header */}
-            <div className="flex items-center justify-between border-b border-gray-100 p-6 bg-gradient-to-r from-indigo-50/50 to-white">
+            <div className="flex items-center justify-between border-b border-gray-100 p-6 bg-linear-to-r from-indigo-50/50 to-white">
               <div>
                 <span className="text-xs font-semibold uppercase tracking-wider text-indigo-600">
                   {analysis.projectType || "Estructura Detectada"}
