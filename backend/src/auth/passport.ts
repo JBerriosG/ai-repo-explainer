@@ -2,6 +2,7 @@ import 'dotenv/config';
 import passport from "passport";
 import { Strategy as GitHubStrategy } from "passport-github2";
 import prisma from "../lib/prisma.js";
+import { encrypt } from "../utils/crypto.js";
 
 passport.serializeUser((user: any, done) => {
   done(null, user.id);
@@ -23,6 +24,8 @@ passport.use(new GitHubStrategy(
   },
   async (_accessToken: any, _refreshToken: any, profile: any, done: any) => {
 
+    const encryptedAccessToken = encrypt(_accessToken);
+
     let user = await prisma.user.findUnique({
       where: {
         githubId: profile.id
@@ -36,7 +39,7 @@ passport.use(new GitHubStrategy(
           username: profile.username || "",
           email: profile.emails?.[0]?.value,
           avatarUrl: profile.photos?.[0]?.value,
-          accessToken: _accessToken
+          accessToken: encryptedAccessToken
         }
       });
     } else {
@@ -46,7 +49,7 @@ passport.use(new GitHubStrategy(
           githubId: profile.id
         },
         data: {
-          accessToken: _accessToken
+          accessToken: encryptedAccessToken
         }
       });
     }
