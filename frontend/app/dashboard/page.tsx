@@ -73,14 +73,14 @@ export default function DashboardPage() {
   if (loading) {
     return (
       <div className="flex h-screen items-center justify-center text-sm font-medium text-gray-500">
-        Cargando repositorios...
+        Loading...
       </div>
     );
   }
   return (
     <div className="relative min-h-screen bg-gray-50 p-6">
       <div className="mx-auto max-w-7xl">
-        <h1 className="mb-6 text-2xl font-bold text-gray-900">Tus Repositorios</h1>
+        <h1 className="mb-6 text-2xl font-bold text-gray-900">Your Repositories</h1>
 
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
           {repos.map((repo: any) => {
@@ -130,7 +130,7 @@ export default function DashboardPage() {
                     ) : (
                       <span>🤖</span>
                     )}
-                    {isThisRepoAnalyzing ? "Analizando..." : "Analizar"}
+                    {isThisRepoAnalyzing ? "Analyzing..." : "Analyze"}
                   </button>
                 </div>
               </div>
@@ -153,10 +153,10 @@ export default function DashboardPage() {
             <div className="flex items-center justify-between border-b border-gray-100 p-6 bg-linear-to-r from-indigo-50/50 to-white">
               <div>
                 <span className="text-xs font-semibold uppercase tracking-wider text-indigo-600">
-                  {analysis.projectType || "Estructura Detectada"}
+                  {analysis.projectType || "Detected structure"}
                 </span>
                 <h3 className="text-xl font-bold text-gray-900">
-                  Resultado del Análisis Inteligente
+                  Result of Analysis
                 </h3>
               </div>
               <button
@@ -173,7 +173,7 @@ export default function DashboardPage() {
               {/* Stack Tecnológico */}
               <div>
                 <h4 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-2">
-                  🚀 Stack Tecnológico
+                  🚀 Tech Stack
                 </h4>
                 <div className="flex flex-wrap gap-2">
                   {analysis.stack?.map((tech: string) => (
@@ -188,7 +188,7 @@ export default function DashboardPage() {
               <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 border-t border-b border-gray-100 py-4">
                 <div>
                   <h4 className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1">
-                    📐 Patrón Arquitectónico
+                    📐 Arquitectonic pattern
                   </h4>
                   <p className="text-sm font-medium text-gray-900">
                     {analysis.architecture?.pattern || "Estructura Estándar"}
@@ -196,14 +196,14 @@ export default function DashboardPage() {
                 </div>
                 <div>
                   <h4 className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1">
-                    📁 Carpetas Clave (`src/`)
+                    📁 Key Folders (`src/`)
                   </h4>
                   <div className="flex flex-wrap gap-1 mt-1">
                     {analysis.architecture?.folders?.map((folder: string) => (
                       <span key={folder} className="inline-flex items-center rounded bg-gray-100 px-2 py-0.5 text-xs font-mono font-medium text-gray-600">
                         {folder.replace('src/', '')}
                       </span>
-                    )) || <span className="text-xs text-gray-400">Ninguna</span>}
+                    )) || <span className="text-xs text-gray-400">None</span>}
                   </div>
                 </div>
               </div>
@@ -211,7 +211,7 @@ export default function DashboardPage() {
               {/* Infraestructura y DevOps */}
               <div>
                 <h4 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-2">
-                  ⚙️ Infraestructura y DevOps
+                  ⚙️ Infrastructure and DevOps
                 </h4>
                 <div className="flex gap-4">
                   <div className="flex items-center gap-2 text-sm">
@@ -237,7 +237,7 @@ export default function DashboardPage() {
               {analysis.dependencies && analysis.dependencies.length > 0 && (
                 <div>
                   <h4 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-2">
-                    📦 Dependencias del Ecosistema
+                    📦 Dependencies of Ecosystem
                   </h4>
                   <div className="flex flex-wrap gap-1.5">
                     {analysis.dependencies.map((dep: string) => (
@@ -255,13 +255,13 @@ export default function DashboardPage() {
                   onClick={closeAnalysisModal}
                   className="rounded-xl border border-gray-300 bg-white px-4 py-2 text-sm font-semibold text-gray-700 shadow-sm transition hover:bg-gray-50"
                 >
-                  Cerrar Ventana
+                  Close
                 </button>
                 <button
                   onClick={() => alert("Próximamente: Enviar contexto al prompt de la IA")}
                   className="rounded-xl bg-indigo-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-indigo-500"
                 >
-                  Generar README.md 🤖
+                  Generate README.md 🤖
                 </button>
               </div>
 

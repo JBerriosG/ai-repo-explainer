@@ -2,7 +2,7 @@ import { getRepoTree } from "./github-tree.service.js";
 import { detectTech } from "./detectors/tech-detector.js";
 import { detectImportantFiles } from "./analyzers/important-files.analyzer.js";
 import { extractImportantFilesContent } from "./extractors/content.extractor.js";
-import { compactFileContent } from "./compactors/index.js";
+import { compactFileContent } from "../../compactors/index.js";
 import { buildRepoContext } from "./builders/context.builder.js";
 import {decrypt} from "../../utils/crypto.js";
 
